@@ -1,4 +1,4 @@
-Django==2.0.12
+Django==2.2.7
 wheel==0.33.6
 pytz==2018.4
 pillow==6.2.0
