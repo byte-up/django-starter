@@ -4,12 +4,12 @@ services:
     restart: always
     image: postgres:latest
     ports:
-      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+      - ${DB_PORT}:${DB_PORT}
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
   web:
     build: .
-    command: 'python manage.py runserver 0.0.0.0:80'
+    command: python manage.py runserver 0.0.0.0:${APP_PORT}
     volumes:
       - '.:/app'
     ports:
