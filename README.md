@@ -1,4 +1,4 @@
-# docker-django-skeleton
+# django-starter
 
 ##### Clear project
 ```bash
