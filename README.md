@@ -1,23 +1,25 @@
-# django-starter
+# Starter
 
-##### Clear project
-```bash
-docker system prune
-docker volume prune
-docker stop $(docker ps -a -q)
-docker rmi $(docker images -a -q)
-docker rm $(docker ps -a -q)
-docker-compose down && docker-compose build --no-cache && docker-compose up
-```
+## Want to use this project?
 
-##### Start the demo project
-```bash
-docker-compose run web python3 manage.py makemigrations
-docker-compose run web python3 manage.py migrate
-docker-compose run web python3 manage.py createsuperuser
-docker-compose up
-```
+### Let's Encrypt Staging
 
-##### Launch project
+1. Rename *.env.staging-sample* to *.env.staging*, *.env.staging.db-sample* to *.env.staging.db*, and *.env.staging.proxy-companion-sample* to *.env.staging.proxy-companion*. Update the environment variables.
+1. Build the images and run the containers:
 
-open browser http://localhost:8000/
+    ```sh
+    $ docker-compose -f docker-compose.staging.yml up -d --build
+    ```
+
+    Test it out.
+
+### Let's Encrypt Production
+
+1. Rename *.env.prod-sample* to *.env.prod*, *.env.prod.db-sample* to *.env.prod.db*, and *.env.prod.proxy-companion-sample* to *.env.prod.proxy-companion*. Update the environment variables.
+1. Build the images and run the containers:
+
+    ```sh
+    $ docker-compose -f docker-compose.prod.yml up -d --build
+    ```
+
+    Test it out.
