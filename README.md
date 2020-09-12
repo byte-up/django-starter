@@ -1,4 +1,4 @@
-# Starter
+# Django starter
 
 ## Want to use this project?
 
