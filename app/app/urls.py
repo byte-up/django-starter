@@ -21,15 +21,18 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
-urlpatterns = [
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('', admin.site.urls),
-    path('accounts/', include('allauth.urls'), name='socialaccount_signup'),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+api_urlpatterns = [
+    path('', include('dj_rest_auth.urls')),
+    path('registration/', include('dj_rest_auth.registration.urls')),
 ]
 
-urlpatterns += i18n_patterns(
-    path('api/', include('dj_rest_auth.urls')),
-    path('api/registration/', include('dj_rest_auth.registration.urls')),
-)
+urlpatterns = [
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('accounts/', include('allauth.urls'), name='socialaccount_signup'),
+    path('auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/v1/', include(api_urlpatterns)),
+    path('', admin.site.urls),
+]
 
